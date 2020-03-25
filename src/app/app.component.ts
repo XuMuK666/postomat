@@ -123,8 +123,16 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.service.getAllPostomatAllOrdersFromDb().subscribe(res=>{
       console.log("getAllPostomatAllOrdersFromDb ", res);
-      this.dataSource = res['orders']? res['orders']: []});
-  }
-
+      if (res['orders']){
+        this.dataSource = [];
+        for (let item in res['orders']){
+          let obj = {'key': item};
+          Object.assign(obj ,res['orders'][item] );
+          this.dataSource.push(obj);
+        }
+      }
+      console.log(this.dataSource)
+  })
+}
 }
 

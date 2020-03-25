@@ -8,16 +8,34 @@ import {MOZApiService} from '../mozapi.service';
 })
 export class DetailsComponent implements OnInit {
 
+  postamat = [];
+
   Current: any;
   @Input()
   set item(val: any) {
     this.Current = val;
-    this.service.getPostomatMeta(val['posstamat_id']).subscribe(res => {
-      console.log( "getPostomatMeta",res);
-    })
+    this.postMeta();
   }
   constructor(private service: MOZApiService) { }
 
   ngOnInit() {}
 
+  postMeta() {
+    this.service.getPostomatMeta(this.Current['posstamat_id']).subscribe(res => {
+      console.log( "getPostomatMeta",res);
+      this.postamat = [];
+      for (let item in res['status_lock']) {
+        let tmp = {};
+        for (let key in res) {
+          if (typeof(res[key]=="object")){
+            tmp[key] = res[key][item];
+          } else {
+            tmp[key] = res[key];
+          }
+        }
+        this.postamat.push(tmp);
+        console.log(this.postamat);
+      }
+    });
+  }
 }

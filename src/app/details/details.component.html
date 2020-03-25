@@ -16,29 +16,54 @@
   <div class="block">
     <dx-button
       stylingMode="outlined"
-      text="Установить пин-код"
+      text="Установить мастер пин-код"
       type="default"
       [width]="220"
+      (click)="service.setMasterPin(Current['posstamat_id']).subscribe()"
       >
     </dx-button>
   </div>
 </div>
 <div class="Row cellRow">
-  <div class="cell" *ngFor="let item of [1,2,3,4,5,6,7]">
+  <div class="cell" *ngFor="let item of postamat">
     <div class="cell-left">
       <div>
-        Ячейка № {{item}}
+        Ячейка № {{item['row_id']}}
       </div>
-      <div>
-        Статус ячейки
+      <div *ngIf="item['order_id']=='0'">
+        Свободна
+      </div>
+      <div *ngIf="item['order_id']!='0'">
+        Заказ №{{item['order_id']}}
       </div>
     </div>
-    <div class="cell-right">
+    <div class="cell-right" >
       <dx-button
+        *ngIf="item['order_id']=='0'"
         stylingMode="contained"
         text="Бронь"
         type="default"
-        [width]="80">
+        [width]="80"
+        (click)="service.reservCell(Current['posstamat_id'], Current['order_id'], item['row_id']).subscribe();postMeta()"
+      >
+      </dx-button>
+      <dx-button
+        *ngIf="item['order_id']!='0'"
+        stylingMode="contained"
+        text="Снять"
+        type="danger"
+        [width]="80"
+        (click)="service.unreservCell(Current['posstamat_id'], Current['order_id'], item['row_id']).subscribe();postMeta()"
+      >
+      </dx-button>
+      <dx-button
+        style="margin-top: .5em"
+        stylingMode="outlined"
+        text="Пин"
+        type="default"
+        [width]="80"
+        (click)="service.setCellPin(Current['posstamat_id'], item['row_id']).subscribe()"
+      >
       </dx-button>
     </div>
   </div>

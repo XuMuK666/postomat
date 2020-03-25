@@ -16,7 +16,7 @@ export class DetailsComponent implements OnInit {
     this.Current = val;
     this.postMeta();
   }
-  constructor(private service: MOZApiService) { }
+  constructor(public service: MOZApiService) { }
 
   ngOnInit() {}
 

@@ -1,0 +1,45 @@
+<div class="Row mrg">
+  <div class="block">
+    Текущая загрузка постамата №<span style="color: #03a9f4">{{Current['posstamat_id']}}</span>
+  </div>
+  <div class="block">
+    Номер заказа <span style="color: #03a9f4">{{Current['order_id']}}</span>
+  </div>
+  <div class="block">
+    Дата и время обновления информации: <span style="color: #03a9f4">{{Current?.date_added}}</span>
+  </div>
+</div>
+<div class="Row mrg">
+  <div class="block">
+   {{Current?.shipping_address_1}}
+  </div>
+  <div class="block">
+    <dx-button
+      stylingMode="outlined"
+      text="Установить пин-код"
+      type="default"
+      [width]="220"
+      >
+    </dx-button>
+  </div>
+</div>
+<div class="Row cellRow">
+  <div class="cell" *ngFor="let item of [1,2,3,4,5,6,7]">
+    <div class="cell-left">
+      <div>
+        Ячейка № {{item}}
+      </div>
+      <div>
+        Статус ячейки
+      </div>
+    </div>
+    <div class="cell-right">
+      <dx-button
+        stylingMode="contained"
+        text="Бронь"
+        type="default"
+        [width]="80">
+      </dx-button>
+    </div>
+  </div>
+</div>

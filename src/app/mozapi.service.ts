@@ -14,6 +14,15 @@ export class MOZApiService {
     return this.http.post('/moz/uiproxy.php', fd, {}
     );
   }
+  public getAllPostomatAllOrdersFromDbA(): Observable <any> {
+    var fd = new FormData();
+    fd.append('command', 'get_all_orders');
+    fd.append('active', '1');
+    return this.http.post('/moz/uiproxy.php', fd, {}
+    );
+  }
+
+
 
   public getPostomatMeta(postId): Observable <any> {
     var fd = new FormData();

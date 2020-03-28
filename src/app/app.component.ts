@@ -82,10 +82,22 @@ export class AppComponent implements OnInit {
 
         text: 'Обновить таблицу',
         stylingMode: "outlined",
-        type: "default"
-        //onClick: this.collapseAllClick.bind(this)
+        type: "default",
+        onClick: this.dataDownload()
       }
     }
+    );
+    e.toolbarOptions.items.unshift( {
+        location: 'before',
+        widget: 'dxButton',
+        options: {
+
+          text: 'Активные',
+          stylingMode: "outlined",
+          type: "default",
+          onClick: this.dataDownloadA()
+        }
+      }
     );
   }
   onFocusedRowChanging(e) {
@@ -120,7 +132,7 @@ export class AppComponent implements OnInit {
 
   title = 'postomat';
 
-  ngOnInit() {
+  dataDownload() {
     this.service.getAllPostomatAllOrdersFromDb().subscribe(res=>{
       console.log("getAllPostomatAllOrdersFromDb ", res);
       if (res['orders']){
@@ -131,8 +143,26 @@ export class AppComponent implements OnInit {
           this.dataSource.push(obj);
         }
       }
-      console.log(this.dataSource)
-  })
+    })
+  }
+
+  dataDownloadA() {
+    this.service.getAllPostomatAllOrdersFromDbA().subscribe(res=>{
+      console.log("getAllPostomatAllOrdersFromDb ", res);
+      if (res['orders']){
+        this.dataSource = [];
+        for (let item in res['orders']){
+          let obj = {'key': item};
+          Object.assign(obj ,res['orders'][item] );
+          this.dataSource.push(obj);
+        }
+      }
+    })
+  }
+
+
+  ngOnInit() {
+    this.dataDownload()
 }
 }
 

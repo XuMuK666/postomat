@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
   }
 
   onToolbarPreparing(e) {
-    e.toolbarOptions.items.unshift( {
+    e.toolbarOptions.items.push( {
       location: 'before',
       widget: 'dxButton',
       options: {
@@ -83,11 +83,11 @@ export class AppComponent implements OnInit {
         text: 'Обновить таблицу',
         stylingMode: "outlined",
         type: "default",
-        onClick: this.dataDownload()
+        onClick: this.dataDownload.bind(this)
       }
     }
     );
-    e.toolbarOptions.items.unshift( {
+    e.toolbarOptions.items.push( {
         location: 'before',
         widget: 'dxButton',
         options: {
@@ -95,7 +95,7 @@ export class AppComponent implements OnInit {
           text: 'Активные',
           stylingMode: "outlined",
           type: "default",
-          onClick: this.dataDownloadA()
+          onClick: this.dataDownloadA.bind(this)
         }
       }
     );

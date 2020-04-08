@@ -11,7 +11,7 @@ export class MOZApiService {
   public getAllPostomatAllOrdersFromDb(): Observable <any> {
     var fd = new FormData();
     fd.append('command', 'get_all_orders');
-    return this.http.post('/moz/uiproxy.php', fd, {}
+    return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
@@ -19,7 +19,7 @@ export class MOZApiService {
     var fd = new FormData();
     fd.append('command', 'get_posstamat_meta');
     fd.append('id', postId);
-    return this.http.post('/moz/uiproxy.php', fd, {}
+    return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
@@ -29,7 +29,7 @@ export class MOZApiService {
     fd.append('id', postId);
     fd.append('order_id', orderId);
     fd.append('cells_global', cell);
-    return this.http.post('/moz/uiproxy.php', fd, {}
+    return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
@@ -39,7 +39,7 @@ export class MOZApiService {
     fd.append('id', postId);
     fd.append('order_id', orderId);
     fd.append('cells_global', cell);
-    return this.http.post('/moz/uiproxy.php', fd, {}
+    return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
@@ -48,7 +48,7 @@ export class MOZApiService {
     fd.append('command', 'posstamat_set_cell_pin');
     fd.append('id', postId);
     fd.append('cell_id', cellId);
-    return this.http.post('/moz/uiproxy.php', fd, {}
+    return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
@@ -56,7 +56,7 @@ export class MOZApiService {
     var fd = new FormData();
     fd.append('command', 'posstamat_set_master_pin');
     fd.append('id', postId);
-    return this.http.post('/moz/uiproxy.php', fd, {}
+    return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 

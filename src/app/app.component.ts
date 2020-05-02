@@ -38,10 +38,7 @@ export class AppComponent implements OnInit {
         caption: "Номер заказа",
         dataField: "order_id",
       },
-      {
-        caption: "Статус обработки",
-        dataField: "order_status_id"
-      },
+
       {
         caption: "Дата добавления статуса",
         dataField: "date_added"
@@ -69,6 +66,22 @@ export class AppComponent implements OnInit {
       {
         caption: "Email",
         dataField: "email"
+      },
+      {
+        caption: "ID статуса заказа",
+        dataField: "order_status_id"
+      },
+      {
+        caption: "Статуса CMS",
+        dataField: "status_cms"
+      },
+      {
+        caption: "Описание статуса",
+        dataField: "status_description"
+      },
+      {
+        caption: "Статус выполнения",
+        dataField: "status_processing"
       },
 
     ];

@@ -44,10 +44,11 @@ export class MOZApiService {
 
   public unreservCell(postId, orderId, cell): Observable <any> {
     var fd = new FormData();
-    fd.append('command', 'posstamat_unreserv');
-    fd.append('id', postId);
+    fd.append('command', 'unreserv_cells');
+    fd.append('post_id', postId);
     fd.append('order_id', orderId);
     fd.append('cells_global', cell);
+    console.log(postId, orderId, cell);
     return this.http.post('/moz/uiproxy.php', fd, {}
     );
   }

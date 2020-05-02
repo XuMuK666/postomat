@@ -53,7 +53,7 @@
         text="Снять"
         type="danger"
         [width]="80"
-        (click)="service.unreservCell(Current['posstamat_id'], Current['order_id'], item['row_id']).subscribe();postMeta()"
+        (click)="service.unreservCell(Current['posstamat_pid'], Current['order_id'], item['row_id']).subscribe();postMeta()"
       >
       </dx-button>
       <dx-button

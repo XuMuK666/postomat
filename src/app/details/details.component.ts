@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {}
 
   postMeta() {
-    this.service.getPostomatMeta(this.Current['posstamat_id']).subscribe(res => {
+    this.service.getPostomatMeta(this.Current['pid_local']).subscribe(res => {
       console.log( "getPostomatMeta",res);
       this.postamat = [];
       for (let item in res['status_lock']) {

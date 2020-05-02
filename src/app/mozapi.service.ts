@@ -55,21 +55,41 @@ export class MOZApiService {
 
   public setCellPin(postId, cellId): Observable <any> {
     var fd = new FormData();
-    fd.append('command', 'posstamat_set_cell_pin');
-    fd.append('id', postId);
+    fd.append('command', 'direct');
+    fd.append('req_type', 'set_pincode');
+    fd.append('post_id', postId);
     fd.append('cell_id', cellId);
-    return this.http.post('/moz/uiproxy.php', fd, {}
+    fd.append('pincod', '123456');
+    return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
   public setMasterPin(postId): Observable <any> {
     var fd = new FormData();
-    fd.append('command', 'posstamat_set_master_pin');
-    fd.append('id', postId);
-    return this.http.post('/moz/uiproxy.php', fd, {}
+    fd.append('command', 'direct');
+    fd.append('req_type', 'set_master_pincode');
+    fd.append('post_id', postId);
+    fd.append('pincod', '123456');
+    return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
+  public getPostamatsFromDB(): Observable <any> {
+    var fd = new FormData();
+    fd.append('command', 'status_db');
+    return this.http.post('/ma/uiproxy.php', fd, {}
+    );
+  }
+
+  public openCell(postId, cellId): Observable <any> {
+    var fd = new FormData();
+    fd.append('command', 'direct');
+    fd.append('req_type', 'open_cell');
+    fd.append('post_id', postId);
+    fd.append('cell_id', cellId);
+    return this.http.post('/ma/uiproxy.php', fd, {}
+    );
+  }
 
 
 

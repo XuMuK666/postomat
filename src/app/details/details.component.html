@@ -1,25 +1,22 @@
 <div class="Row mrg">
   <div class="block">
-    Текущая загрузка постамата №<span style="color: #03a9f4">{{Current['posstamat_id']}}</span>
+    Текущая загрузка постамата №<span style="color: #03a9f4">{{Current['pid_local']}}</span>
   </div>
   <div class="block">
-    Номер заказа <span style="color: #03a9f4">{{Current['order_id']}}</span>
-  </div>
-  <div class="block">
-    Дата и время обновления информации: <span style="color: #03a9f4">{{Current?.date_added}}</span>
+    Дата и время обновления информации: <span style="color: #03a9f4">{{Current?.timestamp}}</span>
   </div>
 </div>
 <div class="Row mrg">
   <div class="block">
-   {{Current?.shipping_address_1}}
+    {{Current['address']}}
   </div>
   <div class="block">
     <dx-button
       stylingMode="outlined"
       text="Установить мастер пин-код"
       type="default"
-      [width]="220"
-      (click)="service.setMasterPin(Current['posstamat_id']).subscribe()"
+      [width]="280"
+      (click)="service.setMasterPin(Current['pid_global']).subscribe()"
       >
     </dx-button>
   </div>
@@ -39,21 +36,11 @@
     </div>
     <div class="cell-right" >
       <dx-button
-        *ngIf="item['order_id']=='0'"
         stylingMode="contained"
-        text="Бронь"
+        text="Открыть"
         type="default"
-        [width]="80"
-        (click)="service.reservCell(Current['posstamat_id'], Current['order_id'], item['row_id']).subscribe();postMeta()"
-      >
-      </dx-button>
-      <dx-button
-        *ngIf="item['order_id']!='0'"
-        stylingMode="contained"
-        text="Снять"
-        type="danger"
-        [width]="80"
-        (click)="service.unreservCell(Current['posstamat_pid'], Current['order_id'], item['row_id']).subscribe();postMeta()"
+        [width]="100"
+        (click)="service.openCell(Current['pid_global'],  item['row_id']).subscribe();postMeta()"
       >
       </dx-button>
       <dx-button
@@ -61,7 +48,7 @@
         stylingMode="outlined"
         text="Пин"
         type="default"
-        [width]="80"
+        [width]="100"
         (click)="service.setCellPin(Current['posstamat_id'], item['row_id']).subscribe()"
       >
       </dx-button>

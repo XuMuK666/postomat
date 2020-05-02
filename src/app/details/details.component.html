@@ -20,6 +20,16 @@
       >
     </dx-button>
   </div>
+  <div class="block">
+    <dx-button
+      stylingMode="outlined"
+      text="Установить пароль"
+      type="default"
+      [width]="280"
+      (click)="service.setPwd(Current['pid_global']).subscribe()"
+    >
+    </dx-button>
+  </div>
 </div>
 <div class="Row cellRow">
   <div class="cell" *ngFor="let item of postamat">

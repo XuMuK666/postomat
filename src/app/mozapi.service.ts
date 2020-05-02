@@ -74,6 +74,16 @@ export class MOZApiService {
     );
   }
 
+  public setPwd(postId): Observable <any> {
+    var fd = new FormData();
+    fd.append('command', 'direct');
+    fd.append('req_type', 'set_password');
+    fd.append('post_id', postId);
+    fd.append('secret', '123456');
+    return this.http.post('/ma/uiproxy.php', fd, {}
+    );
+  }
+
   public getPostamatsFromDB(): Observable <any> {
     var fd = new FormData();
     fd.append('command', 'status_db');

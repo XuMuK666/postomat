@@ -16,7 +16,7 @@
       text="Установить мастер пин-код"
       type="default"
       [width]="280"
-      (click)="service.setMasterPin(Current['pid_global']).subscribe()"
+      (click)="popup=true; formTitle = 'Мастер пин-код'; title='Установка мастер пин-кода'"
       >
     </dx-button>
   </div>
@@ -26,7 +26,7 @@
       text="Установить пароль"
       type="default"
       [width]="280"
-      (click)="service.setPwd(Current['pid_global']).subscribe()"
+      (click)="popup=true; title='Установка пароля';formTitle = 'Пароль';"
     >
     </dx-button>
   </div>
@@ -59,9 +59,37 @@
         text="Пин"
         type="default"
         [width]="100"
-        (click)="service.setCellPin(Current['posstamat_id'], item['row_id']).subscribe()"
+        (click)="popup=true; title='Установка пин-кода'; formTitle = 'Пин-код';cell = item['row_id']"
       >
       </dx-button>
     </div>
   </div>
 </div>
+<dx-popup
+  [width]="300"
+  [height]="150"
+  [showTitle]="true"
+  [title]="title"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [(visible)]="popup">
+  <div *dxTemplate="let data of 'content'" style="display: flex;
+flex-direction: row;
+justify-content: space-around">
+
+    <div class="option">
+      <span>{{formTitle}}</span>
+      <dx-number-box [(value)]="cod"></dx-number-box>
+    </div>
+    <dx-button
+      style="margin-top: .5em"
+      stylingMode="outlined"
+      text="ОК"
+      type="default"
+      [width]="100"
+      (click)="send()"
+    >
+    </dx-button>
+  </div>
+</dx-popup>
+

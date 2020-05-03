@@ -95,6 +95,10 @@ devextreme-angular/ui/data-grid
 
 devextreme-angular/ui/nested
 
+devextreme-angular/ui/number-box
+
+devextreme-angular/ui/popup
+
 jszip
 (MIT OR GPL-3.0)
 JSZip is dual licensed. You may use it under the MIT license *or* the GPLv3

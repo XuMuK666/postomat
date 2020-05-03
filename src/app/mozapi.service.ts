@@ -53,33 +53,33 @@ export class MOZApiService {
     );
   }
 
-  public setCellPin(postId, cellId): Observable <any> {
+  public setCellPin(postId, cellId, cod): Observable <any> {
     var fd = new FormData();
     fd.append('command', 'direct');
     fd.append('req_type', 'set_pincode');
     fd.append('post_id', postId);
     fd.append('cell_id', cellId);
-    fd.append('pincod', '123456');
+    fd.append('pincod', cod);
     return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
-  public setMasterPin(postId): Observable <any> {
+  public setMasterPin(postId, cod): Observable <any> {
     var fd = new FormData();
     fd.append('command', 'direct');
     fd.append('req_type', 'set_master_pincode');
     fd.append('post_id', postId);
-    fd.append('pincod', '123456');
+    fd.append('pincod', cod);
     return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }
 
-  public setPwd(postId): Observable <any> {
+  public setPwd(postId, cod): Observable <any> {
     var fd = new FormData();
     fd.append('command', 'direct');
     fd.append('req_type', 'set_password');
     fd.append('post_id', postId);
-    fd.append('secret', '123456');
+    fd.append('secret', cod);
     return this.http.post('/ma/uiproxy.php', fd, {}
     );
   }

@@ -7,10 +7,13 @@ import {MOZApiService} from '../mozapi.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-
+  popup = false;
+  title = '';
+  formTitle = '';
   postamat = [];
-
+  cell = undefined;
   Current: any;
+  cod = undefined;
   @Input()
   set item(val: any) {
     this.Current = val;
@@ -37,5 +40,22 @@ export class DetailsComponent implements OnInit {
         console.log(this.postamat);
       }
     });
+  }
+
+  send() {
+   if (this.cod) {
+     if (this.formTitle == 'Мастер пин-код') {
+       this.service.setMasterPin(this.Current['pid_global'], this.cod).subscribe();
+     }
+     if (this.formTitle == 'Пин-код') {
+       this.service.setCellPin(this.Current['pid_local'], this.cell, this.cod).subscribe();
+     }
+     if (this.formTitle == 'Пароль') {
+       this.service.setPwd(this.Current['pid_global'], this.cod).subscribe();
+     }
+     this.popup = false;
+   }
+    this.cod = undefined;
+
   }
 }

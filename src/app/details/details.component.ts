@@ -8,9 +8,13 @@ import {MOZApiService} from '../mozapi.service';
 })
 export class DetailsComponent implements OnInit {
 
+  popup = false;
+  title = '';
+  formTitle = '';
   postamat = [];
-
+  cell = undefined;
   Current: any;
+  cod = undefined;
   @Input()
   set item(val: any) {
     this.Current = val;
@@ -38,4 +42,20 @@ export class DetailsComponent implements OnInit {
       }
     });
   }
+
+  send() {
+    if (this.cod) {
+      if (this.formTitle == 'Мастер пин-код') {
+        this.service.setMasterPin(this.Current['posstamat_pid'], this.cod).subscribe();
+      }
+      if (this.formTitle == 'Пин-код') {
+        this.service.setCellPin(this.Current['posstamat_id'], this.cell, this.cod).subscribe();
+      }
+
+      this.popup = false;
+    }
+    this.cod = undefined;
+
+  }
+
 }

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import {DxButtonModule} from 'devextreme-angular';
+import {DxButtonModule, DxPopupModule} from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
 import {
@@ -23,7 +23,9 @@ import { DetailsComponent } from './details/details.component';
     DxDataGridModule,
     DxNumberBoxModule,
     DxCheckBoxModule,
-    DxButtonModule
+    DxButtonModule,
+    DxPopupModule,
+    DxNumberBoxModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
   bootstrap: [AppComponent]

@@ -53,19 +53,23 @@ export class MOZApiService {
     );
   }
 
-  public setCellPin(postId, cellId): Observable <any> {
+  public setCellPin(postId, cellId, cod): Observable <any> {
     var fd = new FormData();
-    fd.append('command', 'posstamat_set_cell_pin');
-    fd.append('id', postId);
+    fd.append('command', 'direct');
+    fd.append('req_type', 'set_pincode');
+    fd.append('post_id', postId);
     fd.append('cell_id', cellId);
+    fd.append('pincod', cod);
     return this.http.post('/moz/uiproxy.php', fd, {}
     );
   }
 
-  public setMasterPin(postId): Observable <any> {
+  public setMasterPin(postId, cod): Observable <any> {
     var fd = new FormData();
-    fd.append('command', 'posstamat_set_master_pin');
-    fd.append('id', postId);
+    fd.append('command', 'direct');
+    fd.append('req_type', 'set_master_pincode');
+    fd.append('post_id', postId);
+    fd.append('pincod', cod);
     return this.http.post('/moz/uiproxy.php', fd, {}
     );
   }
